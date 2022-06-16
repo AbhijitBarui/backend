@@ -1,0 +1,50 @@
+account/auth + img upload for profile
+userlist on left(all accounts registered)
+chat screen on right
+dynamic(js/socket programming)
+gallery(profile dashboard display)
+#djoser
+
+
+notes to self:
+pages we need:
+    index where lies users on left chat on right
+        search bar on top of users to filter users
+        #search button on top of chat to look for certain string
+        message dynamic form
+    user profile dashboard(page first later modal)
+
+
+
+
+
+Schema:
+user(in-built)
+    first name
+    last name
+    user name
+    password
+    email
+profile(one-to-one with auth/user table)
+    image_profile   imagefield      need media and static setup first
+    address         charfield       (better if expanded)
+    status          text field          blank True
+    phone number    charfield
+    dob             datefield
+    created         datetimefield   autnow
+    updated         datetimefield   autonowadd
+
+    #<need a profile edit form>
+
+
+
+
+
+steps:
+auth setup(profile)
+
+
+
+features needed:
+notification system
+google/facebook/sms api authentication

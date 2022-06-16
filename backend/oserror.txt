@@ -1,0 +1,53 @@
+oserror
+[15/Jun/2022 06:50:45] "POST /auth/users/ HTTP/1.1" 201 48
+/home/iaurab/Desktop/markytics/ini_setup/backend/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 15, 2022 - 06:52:02
+Django version 4.0.5, using settings 'backend.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+Internal Server Error: /auth/users/
+Traceback (most recent call last):
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/djoser/views.py", line 144, in perform_create
+    settings.EMAIL.activation(self.request, context).send(to)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/templated_mail/mail.py", line 78, in send
+    super(BaseEmailMessage, self).send(*args, **kwargs)
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/django/core/mail/backends/smtp.py", line 124, in send_messages
+    new_conn_created = self.open()
+  File "/home/iaurab/Desktop/markytics/ini_setup/venv/lib/python3.8/site-packages/django/core/mail/backends/smtp.py", line 80, in open
+    self.connection = self.connection_class(
+  File "/usr/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network is unreachable
+[15/Jun/2022 06:54:16] "POST /auth/users/ HTTP/1.1" 500 139451
