@@ -10,7 +10,6 @@ from .views import UploadViewSet
 
 router = DefaultRouter()
 router.register(r'upload', UploadViewSet, basename="upload")
-router.register(r'upload', UploadViewSet, basename="retrieve")
 
 urlpatterns = router.urls
 urlpatterns = [
