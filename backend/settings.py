@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*8ayk*tht5i+_t1l9(4r0r=s^0jcc5*n%9^gecmvmq#zd(b3(k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-149-72-235.us-west-2.compute.amazonaws.com','localhost']
+ALLOWED_HOSTS = ['ec2-54-149-72-235.us-west-2.compute.amazonaws.com','127.0.0.1']
 
 
 # Application definition
@@ -79,16 +79,26 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'apidb',
+#         'USER': 'abhijit',
+#         'PASSWORD': '76183492',
+#         'HOST': 'localhost',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'apidb',
-        'USER': 'abhijit',
+        'NAME': 'apidbaws',
+        'USER': 'postgres',
         'PASSWORD': '76183492',
-        'HOST': 'localhost',
+        'HOST': 'database-3.chfvu3zacbxp.us-west-2.rds.amazonaws.com',
+        'PORT': 5432,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -143,9 +153,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',    
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework.permissions.IsAuthenticated',
-    # )
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
 
 #JWT

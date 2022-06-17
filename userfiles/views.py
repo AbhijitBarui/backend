@@ -37,8 +37,8 @@ class UploadViewSet(ViewSet):
         return Response(response)
 
 @api_view(['GET'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
+# @authentication_classes([TokenAuthentication])
+# @permission_classes([IsAuthenticated])
 def download_file(request, id):
     file = get_object_or_404(Upload, id=id)
     filepath = file.file_uploaded.path
