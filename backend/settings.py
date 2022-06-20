@@ -163,7 +163,6 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 # Changes made to static and media url:
 
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -171,6 +170,7 @@ MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'backend/static')
 # ]
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -223,7 +223,7 @@ DJOSER = {
 #EMAIL SETUP
 DEFAULT_FROM_EMAIL = 'aogit.simmifoundation@gmail.com'
 SERVER_EMAIL = 'aogit.simmifoundation@gmail.com'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

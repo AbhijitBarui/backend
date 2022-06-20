@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 import requests
-base_url='http://127.0.0.1:8000/'
+base_url='http://ec2-34-208-165-8.us-west-2.compute.amazonaws.com/'
 
 
 def activate(request, uid, token):
