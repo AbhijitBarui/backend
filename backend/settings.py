@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('django_secret_key')
+SECRET_KEY = 'django-insecure-*8ayk*tht5i+_t1l9(4r0r=s^0jcc5*n%9^gecmvmq#zd(b3(k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'apidb',
         'USER': 'abhijit',
-        'PASSWORD': 'regular',
+        'PASSWORD': '76183492',
         'HOST': 'localhost',
     }
 }
@@ -195,8 +195,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'aogit.simmifoundation@gmail.com'
-EMAIL_HOST_PASSWORD = config('email_password')
-
+EMAIL_HOST_PASSWORD = 12344
 # DEFAULT_FROM_EMAIL = 'aogit.simmifoundation@gmail.com'
 # EMAIL_HOST = 'smtp.mailtrap.io'
 # EMAIL_HOST_USER = '12063b4a99cfcb'
