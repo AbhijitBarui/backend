@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*8ayk*tht5i+_t1l9(4r0r=s^0jcc5*n%9^gecmvmq#zd(b3(k'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'apidb',
 #         'USER': 'abhijit',
-#         'PASSWORD': '76183492',
+#         'PASSWORD': config('DB_PASSWORD'),
 #         'HOST': 'localhost',
 #     }
 # }
@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'apidbaws',
         'USER': 'postgres',
-        'PASSWORD': config('db_password'),
+        'PASSWORD': config('DB_PASSWORD'),
         'HOST': 'database-3.chfvu3zacbxp.us-west-2.rds.amazonaws.com',
         'PORT': 5432,
     }
@@ -155,9 +155,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',    
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework.permissions.IsAuthenticated',
-    # )
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
 
 #JWT
@@ -196,7 +196,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'aogit.simmifoundation@gmail.com'
-EMAIL_HOST_PASSWORD = 12344
+EMAIL_HOST_PASSWORD = config('GMAIL_PASSWORD')
 # DEFAULT_FROM_EMAIL = 'aogit.simmifoundation@gmail.com'
 # EMAIL_HOST = 'smtp.mailtrap.io'
 # EMAIL_HOST_USER = '12063b4a99cfcb'
