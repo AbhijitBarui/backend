@@ -80,26 +80,26 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'apidb',
-#         'USER': 'abhijit',
-#         'PASSWORD': 'regular',
-#         'HOST': 'localhost',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'apidbaws',
-        'USER': 'postgres',
-        'PASSWORD': config('db_password'),
-        'HOST': 'database-3.chfvu3zacbxp.us-west-2.rds.amazonaws.com',
-        'PORT': 5432,
+        'NAME': 'apidb',
+        'USER': 'abhijit',
+        'PASSWORD': 'regular',
+        'HOST': 'localhost',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'apidbaws',
+#         'USER': 'postgres',
+#         'PASSWORD': config('db_password'),
+#         'HOST': 'database-3.chfvu3zacbxp.us-west-2.rds.amazonaws.com',
+#         'PORT': 5432,
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -154,9 +154,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',    
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    )
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # )
 }
 
 #JWT

@@ -14,8 +14,8 @@ def userlist(request):
     serializer = UserlistSerializer(users, many=True)
     return Response(serializer.data)
 
-def index(request):
-    return render(request, 'pages/index.html')
+# def index(request):
+#     return render(request, 'pages/index.html')
 
 # def sendmail(request):
 #     send_mail(
