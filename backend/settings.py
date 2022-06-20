@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'userfiles.apps.UserfilesConfig',
     'aldjemy',
     'redirects',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -81,26 +82,26 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'apidb',
-#         'USER': 'abhijit',
-#         'PASSWORD': config('DB_PASSWORD'),
-#         'HOST': 'localhost',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'apidbaws',
-        'USER': 'postgres',
+        'NAME': 'apidb',
+        'USER': 'abhijit',
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': 'database-3.chfvu3zacbxp.us-west-2.rds.amazonaws.com',
-        'PORT': 5432,
+        'HOST': 'localhost',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'apidbaws',
+#         'USER': 'postgres',
+#         'PASSWORD': config('DB_PASSWORD'),
+#         'HOST': 'database-3.chfvu3zacbxp.us-west-2.rds.amazonaws.com',
+#         'PORT': 5432,
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -132,15 +133,46 @@ USE_I18N = True
 
 USE_TZ = True
 
+#AWS S3 SETTINGS
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+AWS_DEFAULT_ACL = "public-read"
+
+AWS_S3_OBJECT_PARAMETERS = {
+		    'CacheControl': 'max-age=86400',
+	    }
+AWS_LOCATION = "static"
+
+AWS_QUERYSTRING_AUTH = False
+
+AWS_HEADERS = {
+		    "Access-Control-Allow-Origin": "*",
+	    }
+	
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+	
+# Changes made to static and media url:
+
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'backend/static')
+# ]
 
-# Media Files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -155,9 +187,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',    
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    )
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    # )
 }
 
 #JWT
