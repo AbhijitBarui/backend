@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'djoser',
     'userfiles.apps.UserfilesConfig',
     'aldjemy',
+    'redirects',
 ]
 
 MIDDLEWARE = [
