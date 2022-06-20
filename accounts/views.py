@@ -1,3 +1,4 @@
+from urllib import response
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
@@ -7,6 +8,9 @@ from .serializers import User, UserlistSerializer
 from rest_framework.decorators import api_view
 
 from django.core.mail import send_mail
+
+def index(request, *args, **kwargs):
+    return render(request, 'pages/index.html')
 
 @api_view(['GET'])
 def userlist(request):
