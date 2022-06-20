@@ -15,7 +15,7 @@ def userlist(request):
     return Response(serializer.data)
 
 def index(request):
-    return HttpResponse("<h1>API IS UP</h1>")
+    return render(request, 'pages/index.html')
 
 # def sendmail(request):
 #     send_mail(

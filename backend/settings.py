@@ -60,7 +60,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,26 +79,26 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'apidb',
-#         'USER': 'abhijit',
-#         'PASSWORD': '76183492',
-#         'HOST': 'localhost',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'apidbaws',
-        'USER': 'postgres',
+        'NAME': 'apidb',
+        'USER': 'abhijit',
         'PASSWORD': '76183492',
-        'HOST': 'database-3.chfvu3zacbxp.us-west-2.rds.amazonaws.com',
-        'PORT': 5432,
+        'HOST': 'localhost',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'apidbaws',
+#         'USER': 'postgres',
+#         'PASSWORD': '76183492',
+#         'HOST': 'database-3.chfvu3zacbxp.us-west-2.rds.amazonaws.com',
+#         'PORT': 5432,
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -172,15 +172,18 @@ DJOSER = {
     'SEND_CONFIRMATION_EMAIL': True,
     'SET_USERNAME_RETYPE': True,
     'SET_PASSWORD_RETYPE': True,
-    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
-    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'red/password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'red/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'red/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {
         'user_create': 'accounts.serializers.UserCreateSerializer',
         'user': 'accounts.serializers.UserCreateSerializer',
         'user_delete': 'accounts.serializers.UserDeleteSerializer',     
     },
+    'EMAIL': {
+            'activation': 'corepack.email.ActivationEmail'
+    }
 }
 
 #EMAIL SETUP
