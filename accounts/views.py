@@ -1,4 +1,4 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import UserAccount
@@ -13,9 +13,6 @@ def userlist(request):
     users = UserAccount.objects.all()
     serializer = UserlistSerializer(users, many=True)
     return Response(serializer.data)
-
-def index(request):
-    return render(request, 'pages/index.html')
 
 # def sendmail(request):
 #     send_mail(
