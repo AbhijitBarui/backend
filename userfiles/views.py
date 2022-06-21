@@ -43,7 +43,7 @@ def download_file(request, id):
     file = get_object_or_404(Upload, id=id)
     filepath = file.file_uploaded.url
     filename = filepath.split("/")[-1]
-    path = open(filepath, 'r')
+    #path = open(filepath, 'r')
 
     # mime_type, _ = mimetypes.guess_type(filepath)
     # # Set the return value of the HttpResponse
